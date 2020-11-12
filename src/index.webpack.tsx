@@ -1,8 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+
+import randomcolor from 'randomcolor'
+
 import FlexBox from './index'
 import forwardDynamicTag from './tools/forwardDynamicTag'
-import randomcolor from 'randomcolor'
 
 console.log( randomcolor )
 

@@ -1,4 +1,5 @@
-import React, { createContext, PropsWithChildren, ReactNode } from 'react'
+import React, { createContext, PropsWithChildren } from 'react'
+
 import sortObjectSizes from '../tools/sortObjectSizes'
 
 const Context = createContext<System.Context>( {
@@ -22,10 +23,10 @@ interface System {
 
 namespace System {
   export interface Context {
-    sizes: { [K in FlexBox.Sizes]: string }
+    sizes: { [K in globalThis.FlexBox.Sizes]: string }
   }
   export type Props = PropsWithChildren<{
-    sizes: { [K in FlexBox.Sizes]: string }
+    sizes: { [K in globalThis.FlexBox.Sizes]: string }
   }>
 }
 

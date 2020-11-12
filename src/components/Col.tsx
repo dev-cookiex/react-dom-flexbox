@@ -1,8 +1,9 @@
 import { useContext, useMemo } from 'react'
-import Row from './Row'
+
 import useNextClosestSizeInProps from '../hooks/useNextClosestSizeInProps'
 import useOmitSizeProps from '../hooks/useOmitSizeProps'
 import forwardDynamicTag from '../tools/forwardDynamicTag'
+import Row from './Row'
 
 const Col = forwardDynamicTag<null, Col.Props>( null, ( { size, ...props } ) => {
   const newProps = useOmitSizeProps( props )

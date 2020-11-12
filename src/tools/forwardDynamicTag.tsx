@@ -1,22 +1,23 @@
 import React, { ElementType, WeakValidationMap, forwardRef, RefAttributes, ComponentType, createContext, useContext, PropsWithChildren } from 'react'
+
 import omit from './omit'
 
 const Context = createContext<forwardDynamicTag.Context>( { DefaultComponent: null } )
 
 type GetProps<E> =
   E extends null
-    ? FlexBox.DefaultDynamicComponent extends keyof JSX.IntrinsicElements
-      ? JSX.IntrinsicElements[FlexBox.DefaultDynamicComponent]
-      : FlexBox.DefaultDynamicComponent extends ComponentType<infer P> ? P : never
+    ? globalThis.FlexBox.DefaultDynamicComponent extends keyof JSX.IntrinsicElements
+      ? JSX.IntrinsicElements[globalThis.FlexBox.DefaultDynamicComponent]
+      : globalThis.FlexBox.DefaultDynamicComponent extends ComponentType<infer P> ? P : never
     : E extends keyof JSX.IntrinsicElements
       ? JSX.IntrinsicElements[E]
       : E extends ComponentType<infer P> ? P : never
 
 type GetElement<E> =
   E extends null
-    ? FlexBox.DefaultDynamicComponent extends keyof JSX.IntrinsicElements
-      ? JSX.IntrinsicElements[FlexBox.DefaultDynamicComponent]
-      : FlexBox.DefaultDynamicComponent
+    ? globalThis.FlexBox.DefaultDynamicComponent extends keyof JSX.IntrinsicElements
+      ? JSX.IntrinsicElements[globalThis.FlexBox.DefaultDynamicComponent]
+      : globalThis.FlexBox.DefaultDynamicComponent
     : E extends keyof JSX.IntrinsicElements
       ? JSX.IntrinsicElements[E]
       : E
@@ -28,7 +29,7 @@ let DefaultDynamicComponentVar = 'div'
 const forwardDynamicTag = <E extends Types | null, P, T extends { [k: string]: any } = {}>(
   initial: E,
   getProps: ( props: GetProps<E> & P ) => GetProps<E> = props => props,
-  RenderComponent?: ComponentType<GetProps<E> & P>,
+  RenderComponent: ComponentType<GetProps<E> & P> | null | undefined = null,
   assing: T = {} as any
 ) => {
   const component = forwardRef<any, any>( ( { as, ...props }, ref ) => {
@@ -66,7 +67,7 @@ forwardDynamicTag.DefaultDynamicComponent = ( props: forwardDynamicTag.DefaultDy
   )
 }
 
-forwardDynamicTag.setDefaultDynamicComponent = ( component: FlexBox.DefaultDynamicComponent ) => {
+forwardDynamicTag.setDefaultDynamicComponent = ( component: globalThis.FlexBox.DefaultDynamicComponent ) => {
   DefaultDynamicComponentVar = component
 }
 

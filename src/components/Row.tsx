@@ -1,4 +1,5 @@
 import React, { createContext, PropsWithChildren } from 'react'
+
 import useNextClosestSizeInProps from '../hooks/useNextClosestSizeInProps'
 import forwardDynamicTag from '../tools/forwardDynamicTag'
 
@@ -6,7 +7,7 @@ const Context = createContext( { cols: 12 } )
 
 const Row = forwardDynamicTag<null, Row.Props, Row.Assing>(
   null,
-  ( { cols, ...props } ) => {
+  ( { cols: _cols, ...props } ) => {
     return {
       ...props,
       style: {
@@ -31,7 +32,7 @@ namespace Row {
   export interface Assing {
     Context: typeof Context
   }
-  export type Props = { cols?: number } & { [K in FlexBox.Sizes]?: number }
+  export type Props = { cols?: number } & { [K in globalThis.FlexBox.Sizes]?: number }
 }
 
 export = Row

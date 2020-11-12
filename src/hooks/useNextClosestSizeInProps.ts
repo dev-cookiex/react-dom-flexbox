@@ -1,4 +1,5 @@
 import { useContext, useMemo } from 'react'
+
 import System from '../components/System'
 import getkeys from '../tools/getKeys'
 import useCurrentSizeKey from './useCurrentSizeKey'
@@ -17,7 +18,7 @@ const useNextClosestSizeInProps = ( props: any, prefix = '', sufix = '' ) => {
     }
 
     return value
-  }, [ keys, current, props ] )
+  }, [ keys, current, props, prefix, sufix ] )
 }
 
 export default useNextClosestSizeInProps

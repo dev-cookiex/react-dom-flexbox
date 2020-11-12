@@ -1,4 +1,4 @@
-import getkeys from "./getKeys";
+import getkeys from './getKeys'
 
 const omit = <O, K extends keyof O>( object: O, ...args: K[] ) =>
   getkeys( object )

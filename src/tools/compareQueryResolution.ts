@@ -1,4 +1,4 @@
-import processQueryResolution from "./processQueryResolution"
+import processQueryResolution from './processQueryResolution'
 
 const compare = ( left: number, query: string, right: number ) => {
   switch ( query ) {
@@ -11,7 +11,7 @@ const compare = ( left: number, query: string, right: number ) => {
 }
 
 const compareQueryResolution = ( query: string, currentResolution: number ) => {
-  const { operation, resolution, unit } = processQueryResolution( query )
+  const { operation, resolution } = processQueryResolution( query )
 
   return compare( currentResolution, operation, resolution )
 }

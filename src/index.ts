@@ -1,7 +1,9 @@
-import FlexboxSystem from './components/System'
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import FlexboxCol from './components/Col'
 import FlexboxRow from './components/Row'
-import { ComponentType } from 'react'
+import FlexboxSystem from './components/System'
+
 
 namespace FlexBox {
   export import System = FlexboxSystem
@@ -14,6 +16,7 @@ declare global {
     export interface Configuration {
       defaultDynamicComponent: null
     }
+
     export type DefaultDynamicComponent =
       Configuration['defaultDynamicComponent'] extends null ? 'div' : Configuration['defaultDynamicComponent']
 
