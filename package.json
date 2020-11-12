@@ -1,6 +1,6 @@
 {
   "name": "@cookiex-react/dom-flexbox",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Cookiex React DOM Flexbox grid",
   "main": "dist/index.js",
   "repository": "https://github.com/dev-cookiex/react-dom-flexbox.git",
