@@ -7,7 +7,9 @@
   "author": "Tony <tony.js@zoho.eu>",
   "license": "MIT",
   "scripts": {
-    "start": "webpack serve --config webpack.config.ts --mode development"
+    "start": "webpack serve --config webpack.config.ts --mode development",
+    "build": "tsc",
+    "prepublishOnly": "yarn build"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
