@@ -21,7 +21,7 @@ const Col = forwardDynamicTag<null, Col.Props>( null, ( { size, ...props } ) => 
 } )
 
 namespace Col {
-  export type Props = { size?: number } & { [K in FlexBox.Sizes]?: number }
+  export type Props = { size?: number } & { [K in globalThis.FlexBox.Sizes]?: number }
 }
 
 export = Col
