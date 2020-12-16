@@ -909,6 +909,22 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
+"@cookiex-react/dom-animated@^0.0.0":
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/@cookiex-react/dom-animated/-/dom-animated-0.0.0.tgz#fce6db48d742bc77e1feee53701caaeba60ce25a"
+  integrity sha512-EWwhV7iWM65zrg70t0tjuQhruLzNxbBhKDGNaAtc/1Tows0SFil+HprH8v1A9At26Y5hIpxcEIP6dhv1SUlWjw==
+  dependencies:
+    "@cookiex-react/dom-flexbox" "^0.0.2"
+    "@cookiex-react/forward-component" "^0.2.5"
+    "@cookiex-react/use-refs" "^1.0.0"
+
+"@cookiex-react/dom-flexbox@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@cookiex-react/dom-flexbox/-/dom-flexbox-0.0.2.tgz#3d99e0ec603cc3e9fe7480935f581f60a5a9b478"
+  integrity sha512-e2V3yCNA9Yufd6gZkRD3uuzrLGJASu8emjeQufjftSMCsd1AqYXkXMgI4xDKmsEiCVmbnKwhB9CQR/mDs9p2xQ==
+  dependencies:
+    classnames "^2.2.6"
+
 "@cookiex-react/eslint-config@^0.1.5":
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/@cookiex-react/eslint-config/-/eslint-config-0.1.5.tgz#f38a1e703749b490a641f02fff99d09b9561bcfc"
@@ -917,6 +933,18 @@
     "@cookiex/eslint-config" "*"
     eslint-plugin-react "^7.18.3"
     eslint-plugin-react-hooks "^2.5.0"
+
+"@cookiex-react/forward-component@^0.2.5":
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/@cookiex-react/forward-component/-/forward-component-0.2.5.tgz#eb262e364659f3ca0cf8270f3bc4c7903276bb33"
+  integrity sha512-+EXWdFPYJ+2pKHVYiQ+7zlHxnFdARG0R3HNz6jcNZSp5y2wCmmF70+SP1qn8YqQm9ifj7yg1JZsEftcvlYOJ3A==
+  dependencies:
+    "@cookiex-react/use-refs" "^1.0.0"
+
+"@cookiex-react/use-refs@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@cookiex-react/use-refs/-/use-refs-1.0.0.tgz#d225306078d46f50b7f973e654dcc2b4e50f0997"
+  integrity sha512-I35Kzpa33ImJSeul3f4dryWmvE9AIJ/lC14/x+s+C+fvKufVbGcKSZ/cVidXJ126QWTSOYWMVPA0cyV6HP8mUA==
 
 "@cookiex/eslint-config@*":
   version "0.4.1"
@@ -5345,10 +5373,15 @@ type-is@~1.6.17, type-is@~1.6.18:
     media-typer "0.3.0"
     mime-types "~2.1.24"
 
-typescript@^4.0.3, typescript@^4.0.5:
+typescript@^4.0.3:
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.0.5.tgz#ae9dddfd1069f1cb5beb3ef3b2170dd7c1332389"
   integrity sha512-ywmr/VrTVCmNTJ6iV2LwIrfG1P+lv6luD8sUJs+2eI9NLGigaN+nUQc13iHqisq7bra9lnmUSYqbJvegraBOPQ==
+
+typescript@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.1.2.tgz#6369ef22516fe5e10304aae5a5c4862db55380e9"
+  integrity sha512-thGloWsGH3SOxv1SoY7QojKi0tc+8FnOmiarEGMbd/lar7QOEd3hvlx3Fp5y6FlDUGl9L+pd4n2e+oToGMmhRQ==
 
 typical@^5.0.0, typical@^5.2.0:
   version "5.2.0"

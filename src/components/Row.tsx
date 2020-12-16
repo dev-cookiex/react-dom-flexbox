@@ -1,37 +1,35 @@
-import React, { createContext, PropsWithChildren } from 'react'
+import forwardComponent from '@cookiex-react/forward-component'
+
+import React, { createContext, PropsWithChildren, useMemo } from 'react'
 
 import useNextClosestSizeInProps from '../hooks/useNextClosestSizeInProps'
-import forwardDynamicTag from '../tools/forwardDynamicTag'
+import useOmitSizeProps from '../hooks/useOmitSizeProps'
 
 const Context = createContext( { cols: 12 } )
 
-const Row = forwardDynamicTag<null, Row.Props, Row.Assing>(
-  null,
-  ( { cols: _cols, ...props } ) => {
-    return {
-      ...props,
-      style: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        ...props.style
-      }
-    }
-  },
-  ( { children, cols: colsProp = 12, ...props }: PropsWithChildren<Row.Props> ) => {
+const RowComponent = forwardComponent<PropsWithChildren<Row.Props>>(
+  ( { cols: colsProp = 12, ...props }, Component ) => {
     const cols = useNextClosestSizeInProps( props ) ?? colsProp
+    const { style: propStyle, ...realProps } = useOmitSizeProps( props ) as any
+    const style = useMemo( () => ( {
+      display: 'flex',
+      flexWrap: 'wrap',
+      ...propStyle
+    } ), [ propStyle ] )
+
     return (
-      <Row.Context.Provider value={ { cols } }>
-        {children}
-      </Row.Context.Provider>
+      <Context.Provider value={ { cols } }>
+        <Component {...realProps} style={style}/>
+      </Context.Provider>
     )
-  },
-  { Context }
+  }
 )
 
+RowComponent.displayName = 'Row'
+
+const Row = Object.assign( RowComponent, { Context } )
+
 namespace Row {
-  export interface Assing {
-    Context: typeof Context
-  }
   export type Props = { cols?: number } & { [K in globalThis.FlexBox.Sizes]?: number }
 }
 

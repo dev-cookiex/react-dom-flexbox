@@ -1,27 +1,51 @@
-import { useContext, useMemo } from 'react'
+import forwardComponent from '@cookiex-react/forward-component'
+
+import React, { useContext, useMemo } from 'react'
 
 import useNextClosestSizeInProps from '../hooks/useNextClosestSizeInProps'
 import useOmitSizeProps from '../hooks/useOmitSizeProps'
-import forwardDynamicTag from '../tools/forwardDynamicTag'
 import Row from './Row'
 
-const Col = forwardDynamicTag<null, Col.Props>( null, ( { size, ...props } ) => {
+const ColDefaultStyle = {
+  position: 'relative',
+  width: '100%'
+}
+
+const Col = forwardComponent<Col.Props>( ( { size, ...props }: Col.Props & { style?: any }, Component ) => {
   const newProps = useOmitSizeProps( props )
   const csize = useNextClosestSizeInProps( props ) ?? size
   const { cols } = useContext( Row.Context )
 
-  const width = useMemo( () => {
+  const dsize = useMemo( () => {
+    if ( typeof csize === 'string' ) return csize
+
+    if ( !csize ) return '100%'
+
     return `${( csize / cols * 100 ).toFixed( 8 )}%`
   }, [ csize, cols ] )
 
-  return {
-    ...newProps,
-    style: { flex: '0 0 auto', width, ...props.style },
-  }
+  const maxWidth = useMemo( () => dsize, [ dsize ] )
+
+  const flexBasis = useMemo( () => csize ? dsize : 0, [ dsize, csize ] )
+
+  const flexGrow = useMemo( () => csize ? 0 : 1, [ csize ] )
+
+  const flexShrink = useMemo( () => 0, [] )
+
+  const flex = useMemo( () => ( { flexGrow, flexBasis, flexShrink } ), [ flexGrow, flexBasis, flexShrink ] )
+
+  const style = useMemo( () => {
+    
+    return { ...flex, maxWidth, ...ColDefaultStyle, ...props.style }
+  }, [ flex, maxWidth, props.style ] )
+
+  return <Component {...newProps} style={style}/>
 } )
 
+Col.displayName = 'Col'
+
 namespace Col {
-  export type Props = { size?: number } & { [K in globalThis.FlexBox.Sizes]?: number }
+  export type Props = { size?: number | 'auto' } & { [K in globalThis.FlexBox.Sizes]?: number | 'auto' }
 }
 
 export = Col
