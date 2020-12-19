@@ -941,6 +941,13 @@
   dependencies:
     "@cookiex-react/use-refs" "^1.0.0"
 
+"@cookiex-react/forward-component@^0.2.6":
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/@cookiex-react/forward-component/-/forward-component-0.2.6.tgz#6d537ba589acfd018ef263c58cee36f59c51e077"
+  integrity sha512-q0Ugwug09JkR9Sacryrw055reAe/J97oQFsKoE/plKyIEEotQNuXKx4EvFZhU+aoABYKEY/i6pDu7uVmyrAkwA==
+  dependencies:
+    "@cookiex-react/use-refs" "^1.0.0"
+
 "@cookiex-react/use-refs@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@cookiex-react/use-refs/-/use-refs-1.0.0.tgz#d225306078d46f50b7f973e654dcc2b4e50f0997"
