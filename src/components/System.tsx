@@ -16,9 +16,12 @@ const System: System = ( { sizes, children } ) => {
 
 System.Context = Context
 
+System.displayName = 'FlexBoxSystem'
+
 interface System {
   ( props: System.Props ): JSX.Element
   Context: typeof Context
+  displayName: string
 }
 
 namespace System {

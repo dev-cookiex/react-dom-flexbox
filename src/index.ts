@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import FlexboxCol from './components/Col'
-import FlexboxRow from './components/Row'
-import FlexboxSystem from './components/System'
-
+import FlexBoxCol from './components/Col'
+import FlexBoxConfigure from './components/Configure'
+import FlexBoxRow from './components/Row'
+import FlexBoxSystem from './components/System'
 
 namespace FlexBox {
-  export import System = FlexboxSystem
-  export import Col = FlexboxCol
-  export import Row = FlexboxRow
+  export import System = FlexBoxSystem
+  export import Col = FlexBoxCol
+  export import Row = FlexBoxRow
+  export import Configure = FlexBoxConfigure
 }
 
 declare global {

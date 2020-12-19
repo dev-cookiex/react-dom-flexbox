@@ -1,9 +1,10 @@
 import forwardComponent from '@cookiex-react/forward-component'
 
-import React, { useContext, useMemo } from 'react'
+import React, { CSSProperties, useContext, useMemo } from 'react'
 
 import useNextClosestSizeInProps from '../hooks/useNextClosestSizeInProps'
 import useOmitSizeProps from '../hooks/useOmitSizeProps'
+import { useInitialSystemNull } from './Configure'
 import Row from './Row'
 
 const ColDefaultStyle = {
@@ -34,10 +35,14 @@ const Col = forwardComponent<Col.Props>( ( { size, ...props }: Col.Props & { sty
 
   const flex = useMemo( () => ( { flexGrow, flexBasis, flexShrink } ), [ flexGrow, flexBasis, flexShrink ] )
 
-  const style = useMemo( () => {
+  const initialSystemNull = useInitialSystemNull()
+
+  const style = useMemo( (): CSSProperties => {
+
+    if ( initialSystemNull ) return {}
     
     return { ...flex, maxWidth, ...ColDefaultStyle, ...props.style }
-  }, [ flex, maxWidth, props.style ] )
+  }, [ flex, maxWidth, props.style, initialSystemNull ] )
 
   return <Component {...newProps} style={style}/>
 } )
