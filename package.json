@@ -35,7 +35,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "@cookiex-react/forward-component": "^0.2.6",
+    "@cookiex-react/forward-component": "^0.2.7-dev-de71078.0",
     "classnames": "^2.2.6"
   }
 }

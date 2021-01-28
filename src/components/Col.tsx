@@ -12,7 +12,7 @@ const ColDefaultStyle = {
   width: '100%'
 }
 
-const Col = forwardComponent<Col.Props>( ( { size, ...props }: Col.Props & { style?: any }, Component ) => {
+const Col = forwardComponent<Col.Props>( ( Component, { size, ...props }: Col.Props & { style?: any }, ref ) => {
   const newProps = useOmitSizeProps( props )
   const csize = useNextClosestSizeInProps( props ) ?? size
   const { cols } = useContext( Row.Context )
@@ -44,10 +44,10 @@ const Col = forwardComponent<Col.Props>( ( { size, ...props }: Col.Props & { sty
     return { ...flex, maxWidth, ...ColDefaultStyle, ...props.style }
   }, [ flex, maxWidth, props.style, initialSystemNull ] )
 
-  return <Component {...newProps} style={style}/>
+  return <Component {...newProps} style={style} ref={ref}/>
 } )
 
-Col.displayName = 'Col'
+Object.assign( Col, { displayName: 'Col' } )
 
 namespace Col {
   export type Props = { size?: number | 'auto' } & { [K in globalThis.FlexBox.Sizes]?: number | 'auto' }

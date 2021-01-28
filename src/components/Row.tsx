@@ -8,7 +8,7 @@ import useOmitSizeProps from '../hooks/useOmitSizeProps'
 const Context = createContext( { cols: 12 } )
 
 const RowComponent = forwardComponent<PropsWithChildren<Row.Props>>(
-  ( { cols: colsProp = 12, ...props }, Component ) => {
+  ( Component, { cols: colsProp = 12, ...props }, ref ) => {
     const cols = useNextClosestSizeInProps( props ) ?? colsProp
     const { style: propStyle, ...realProps } = useOmitSizeProps( props ) as any
     const style = useMemo( () => ( {
@@ -19,15 +19,13 @@ const RowComponent = forwardComponent<PropsWithChildren<Row.Props>>(
 
     return (
       <Context.Provider value={ { cols } }>
-        <Component {...realProps} style={style}/>
+        <Component {...realProps} style={style} ref={ref}/>
       </Context.Provider>
     )
   }
 )
 
-RowComponent.displayName = 'Row'
-
-const Row = Object.assign( RowComponent, { Context } )
+const Row = Object.assign( RowComponent, { Context, displayName: 'Row' } )
 
 namespace Row {
   export type Props = { cols?: number } & { [K in globalThis.FlexBox.Sizes]?: number }
